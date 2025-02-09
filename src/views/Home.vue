@@ -6,19 +6,22 @@
     </div>
   </div>
   <TodoStats />
+  <Team />
 </template>
 
 <script>
 import Heading from '@/components/Heading.vue';
 import ToDoListHeading from '@/components/ToDoListHeading.vue';
 import TodoStats from "@/components/TodoStats.vue";
+import Team from "@/components/Team.vue";
 
 export default {
   name: 'Home',
   components: {
     Heading,
     ToDoListHeading,
-    TodoStats
+    TodoStats,
+    Team
   }
 };
 </script>
