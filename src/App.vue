@@ -9,7 +9,7 @@
       <Background />
     </div>
 
-    <div class="mt-32 flex-1">
+    <div class="mt-20 flex-1">
       <router-view />
     </div>
 

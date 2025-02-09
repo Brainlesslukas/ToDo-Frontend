@@ -6,10 +6,10 @@
     </div>
 
     <div class="flex space-x-4 mr-16 font-semibold text-lg">
-      <a href="#" class="hover:bg-blue-400 p-2 rounded-sm">Home</a>
-      <a href="#" class="hover:bg-blue-400 p-2 rounded-sm">ToDos</a>
-      <a href="#" class="hover:bg-blue-400 p-2 rounded-sm">Login</a>
-      <a href="#" class="hover:bg-blue-400 p-2 rounded-sm">Register</a>
+      <a href="#" class="hover:bg-green-400 p-2 rounded-sm">Home</a>
+      <a href="#" class="hover:bg-green-400 p-2 rounded-sm">ToDos</a>
+      <a href="#" class="hover:bg-green-400 p-2 rounded-sm">Login</a>
+      <a href="#" class="hover:bg-green-400 p-2 rounded-sm">Register</a>
     </div>
   </div>
 </template>

@@ -7,7 +7,7 @@
       <input v-model="name"
              type="text"
              placeholder="Please enter your name"
-             class="bg-gray-300 w-full h-10 text-lg rounded-sm border-2 p-2 pl-4 border-blue-500 focus:border-blue-500 focus:ring-0 outline-none"
+             class="bg-gray-300 w-full h-10 text-lg rounded-sm border-2 p-2 pl-4 border-green-500 focus:border-green-500 focus:ring-0 outline-none"
       />
     </div>
 
@@ -16,7 +16,7 @@
       <input v-model="email"
              type="email"
              placeholder="Please enter your Email"
-             class="bg-gray-300 w-full h-10 text-lg rounded-sm border-2 p-2 pl-4 border-blue-500 focus:border-blue-500 focus:ring-0 outline-none"
+             class="bg-gray-300 w-full h-10 text-lg rounded-sm border-2 p-2 pl-4 border-green-500 focus:border-green-500 focus:ring-0 outline-none"
       />
     </div>
 
@@ -25,7 +25,7 @@
       <input v-model="password"
              type="password"
              placeholder="Please enter your Password"
-             class="bg-gray-300 w-full h-10 text-lg rounded-sm border-2 p-2 pl-4 border-blue-500 focus:border-blue-500 focus:ring-0 outline-none"
+             class="bg-gray-300 w-full h-10 text-lg rounded-sm border-2 p-2 pl-4 border-green-500 focus:border-green-500 focus:ring-0 outline-none"
       />
     </div>
 
@@ -35,7 +35,7 @@
       <input v-model="confirmPassword"
              type="password"
              placeholder="Please confirm your Password"
-             class="bg-gray-300 w-full h-10 text-lg rounded-sm border-2 p-2 pl-4 border-blue-500 focus:border-blue-500 focus:ring-0 outline-none"
+             class="bg-gray-300 w-full h-10 text-lg rounded-sm border-2 p-2 pl-4 border-green-500 focus:border-green-500 focus:ring-0 outline-none"
       />
       <p v-if="password && confirmPassword && password !== confirmPassword" class="text-red-500 text-sm mt-2">
         Passwords do not match!
@@ -46,7 +46,7 @@
       <button
           @click="sendData"
           :disabled="isLoading || password !== confirmPassword"
-          class="text-lg font-medium mt-4 bg-blue-500 w-28 h-10 rounded-md flex justify-center items-center hover:bg-blue-400 cursor-pointer"
+          class="text-lg font-medium mt-4 bg-green-500 w-28 h-10 rounded-md flex justify-center items-center hover:bg-green-400 cursor-pointer"
       >
         <span v-if="!isLoading">Absenden</span>
         <svg v-if="isLoading" class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -57,7 +57,7 @@
     </div>
 
     <div class="mt-4 flex justify-center items-center font-medium text-gray-500">
-      <p>Already have an account? <span class="text-blue-500 hover:underline"><a href="/login">Login</a></span></p>
+      <p>Already have an account? <span class="text-green-500 hover:underline"><a href="/login">Login</a></span></p>
     </div>
 
     <div class="mt-2 flex justify-center items-center">

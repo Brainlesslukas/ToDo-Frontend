@@ -1,0 +1,7 @@
+services:
+  vue-app:
+    build: .
+    container_name: taskify-web
+    restart: always
+    ports:
+      - "8080:80"
