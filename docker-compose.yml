@@ -1,7 +1,9 @@
+
 services:
   vue-app:
-    build: .
-    container_name: taskify-web
+    image: brainlesslukas/todo-web:latest
+    container_name: vue-app
     restart: always
     ports:
       - "4000:80"
+    pull_policy: always
