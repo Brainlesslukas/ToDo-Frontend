@@ -17,6 +17,9 @@
           <a href="#">
             <i class="fa-brands fa-x-twitter hover:text-gray-500"></i>
           </a>
+          <a href="#">
+            <i class="fa-brands fa-github hover:text-green-500"></i>
+          </a>
         </div>
       </div>
 

@@ -1,20 +1,24 @@
 <template>
-    <div class="relative z-10 text-black">
-      <Test />
-      <a href="/todoweb/src/views/Register" class="block">SignUp</a>
-      <a href="/todoweb/src/views/Login" class="block">Login</a>
+  <div class="mt-10 flex items-center">
+    <Heading />
+    <div class="mb-10 mt-10">
+      <ToDoListHeading />
     </div>
+  </div>
+  <TodoStats />
 </template>
 
 <script>
-import Test from '@/components/Test.vue';
-import Background from "@/components/Background.vue";
+import Heading from '@/components/Heading.vue';
+import ToDoListHeading from '@/components/ToDoListHeading.vue';
+import TodoStats from "@/components/TodoStats.vue";
 
 export default {
   name: 'Home',
   components: {
-    Test,
-    Background
+    Heading,
+    ToDoListHeading,
+    TodoStats
   }
-}
+};
 </script>

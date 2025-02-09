@@ -9,13 +9,14 @@
       <Background />
     </div>
 
-    <div class="mt-16 flex-1">
+    <div class="mt-32 flex-1">
       <router-view />
     </div>
 
-    <Footer class="bg-white shadow-md">
+    <footer class="bg-white shadow-md">
       <Footer />
-    </Footer>
+    </footer>
+
   </div>
 </template>
 
