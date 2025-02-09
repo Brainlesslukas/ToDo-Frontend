@@ -1,7 +1,10 @@
 services:
-  vue-app:
-    build: .
-    container_name: taskify-web
-    restart: always
+  web:
+    container_name: todo_frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "4000:80"
+      - 4000:80
+    restart: always
+    pull_policy: build
