@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'shadows': ['"Shadows Into Light"', 'cursive'], //Hand Lettering Schrift
+        'alexandria': ['Alexandria', 'sans-serif'],
       },
     },
   },
