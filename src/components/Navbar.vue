@@ -7,9 +7,9 @@
 
     <div class="flex space-x-4 mr-16 font-semibold text-lg">
       <a href="https://taskify.brainlesslukas.xyz" class="hover:bg-green-400 p-2 rounded-sm">Home</a>
-      <a href="https://taskify.brainlesslukas/todo" class="hover:bg-green-400 p-2 rounded-sm">ToDos</a>
+      <a href="https://taskify.brainlesslukas.zyz/todo" class="hover:bg-green-400 p-2 rounded-sm">ToDos</a>
       <a href="https://taskify.brainlesslukas.xyz/login" class="hover:bg-green-400 p-2 rounded-sm">Login</a>
-      <a href="#" class="hover:bg-green-400 p-2 rounded-sm">Register</a>
+      <a href="https://taskify.brainlesslukas.xyz/register" class="hover:bg-green-400 p-2 rounded-sm">Register</a>
     </div>
   </div>
 </template>
