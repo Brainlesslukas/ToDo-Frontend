@@ -1,6 +1,5 @@
 services:
   web:
-    container_name: todo_frontend
     build:
       context: .
       dockerfile: Dockerfile
