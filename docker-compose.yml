@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      VUE_APP_ADMIN_PASSWORD: ${VUE_APP_ADMIN_PASSWORD}
     ports:
       - 4000:80
     restart: always
