@@ -52,7 +52,6 @@ export default {
       formattedUptime: '',
       errorMessage: '',
       isLoading: false,
-      apiToken: process.env.VUE_APP_ADMIN_PASSWORD,
     };
   },
 
@@ -63,27 +62,15 @@ export default {
       this.formattedUptime = '';
 
       try {
-        const responseUptime = await axios.get('https://api.brainlesslukas.xyz/stats/portainer-uptime', {
-          headers: {
-            'Authorization': `Bearer ${this.apiToken}`
-          }
-        });
-        const responseTodos = await axios.get('https://api.brainlesslukas.xyz/stats/count-todos', {
-          headers: {
-            'Authorization': `Bearer ${this.apiToken}`
-          }
-        });
-        const responseUsers = await axios.get('https://api.brainlesslukas.xyz/stats/count-users', {
-          headers: {
-            'Authorization': `Bearer ${this.apiToken}`
-          }
-        });
+        const responseUptime = await axios.get('https://api.brainlesslukas.xyz/stats/portainer-uptime');
+        const responseTodos = await axios.get('https://api.brainlesslukas.xyz/stats/count-todos');
+        const responseUsers = await axios.get('https://api.brainlesslukas.xyz/stats/count-users');
 
         const uptime = responseUptime.data.uptime;
 
         const todos = responseTodos.data;
         this.todos = todos;
-        
+
         const users = responseUsers.data;
         this.users = users;
 
@@ -113,7 +100,6 @@ export default {
 
   mounted() {
     this.getData();
-    console.log(this.apiToken);
   }
 };
 </script>
