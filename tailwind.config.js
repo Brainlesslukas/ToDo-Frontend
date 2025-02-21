@@ -4,10 +4,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'alexandria': ['Alexandria', 'sans-serif'],
+        sans: ['Raleway', 'sans-serif'], // Standard-Schriftart ändern
+        raleway: ['Raleway', 'sans-serif'],
+        alexandria: ['Alexandria', 'sans-serif'],
       },
     },
   },
   plugins: [],
 }
-

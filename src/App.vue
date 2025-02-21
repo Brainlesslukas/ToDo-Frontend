@@ -1,7 +1,8 @@
 <template>
   <div class="flex flex-col min-h-screen">
 
-    <navbar class="fixed top-0 left-0 w-full z-10 bg-white shadow-md">
+
+    <navbar class="fixed top-0 left-0 w-full z-10 backdrop-blur shadow-md">
       <Navbar />
     </navbar>
 
@@ -9,11 +10,11 @@
       <Background />
     </div>
 
-    <div class="mt-20 flex-1">
+    <div class="mt-20 flex-1 mb-20">
       <router-view />
     </div>
 
-    <footer class="bg-white shadow-md">
+    <footer class="bg-[#0D1B12] shadow-md">
       <Footer />
     </footer>
 
