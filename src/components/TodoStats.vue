@@ -1,6 +1,6 @@
 <template>
   <div class="bg-[#0D1B12] px-10 pt-16 pb-10 border-t-[1px] border-b-[1px] border-green-700 font-raleway">
-    <div class="flex space-x-28 justify-center">
+    <div class="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-28 justify-center items-center">
 
       <!-- Total Users -->
       <div class="bg-[#0F1E16] bg-opacity-90 w-64 h-64 text-center p-4 rounded-md border-2 border-green-600 flex flex-col justify-between items-center transform hover:scale-110 transition-transform duration-300">

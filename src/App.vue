@@ -1,7 +1,6 @@
 <template>
   <div class="flex flex-col min-h-screen">
 
-
     <navbar class="fixed top-0 left-0 w-full z-10 backdrop-blur shadow-md">
       <Navbar />
     </navbar>

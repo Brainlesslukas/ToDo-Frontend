@@ -1,13 +1,14 @@
 <template>
-  <div class="mt-10 flex items-center">
+  <div class="mt-10 flex items-center justify-center gap-x-6 mb-10">
     <Heading />
-    <div class="mb-10 mt-10">
+    <div class="hidden md:block toDoList">
       <ToDoListHeading />
     </div>
   </div>
   <TodoStats />
   <Team />
 </template>
+
 
 <script>
 import Heading from '@/components/Heading.vue';
@@ -25,3 +26,16 @@ export default {
   }
 };
 </script>
+
+<style>
+.toDoList {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .toDoList {
+    display: block;
+  }
+}
+
+</style>
