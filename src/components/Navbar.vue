@@ -1,12 +1,12 @@
 <template>
   <div class="flex justify-between items-center py-5 border-b-[1px] border-white">
 
-    <div class="flex space-x-4 ml-16 font-extralight text-lg font-raleway text-white hidden md:block">
+    <div class="flex space-x-12 ml-16 font-extralight text-lg font-raleway text-white hidden md:block">
       <a href="https://taskify.brainlesslukas.xyz" class="relative inline-block pb-1 text-lg after:block after:w-0 after:h-[0.5px] after:bg-white after:transition-all after:duration-300 after:left-0 hover:after:w-full">
         Home
       </a>
       <a href="https://taskify.brainlesslukas.zyz/todo" class="relative inline-block pb-1 text-lg after:block after:w-0 after:h-[0.5px] after:bg-white after:transition-all after:duration-300 after:left-0 hover:after:w-full">
-        ToDos
+        ToDo's
       </a>
     </div>
 
@@ -15,7 +15,7 @@
       <img src="@/assets/Logo.webp" class="h-8 mr-2">
     </div>
 
-    <div class="flex space-x-4 mr-16 font-extralight text-lg font-raleway text-white hidden md:block">
+    <div class="flex space-x-12 mr-16 font-extralight text-lg font-raleway text-white hidden md:block">
       <a href="https://taskify.brainlesslukas.xyz/login" class="relative inline-block pb-1 text-lg after:block after:w-0 after:h-[0.5px] after:bg-white after:transition-all after:duration-300 after:left-0 hover:after:w-full">
         Login
       </a>
