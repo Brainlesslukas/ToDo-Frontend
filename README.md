@@ -1,4 +1,6 @@
 # todo-web
+## About
+This Repository is the Frontend of the NestJs-Api. Here you can find the Backend: https://github.com/brainlesslukas/todo-backend
 
 ## Project setup
 ```
