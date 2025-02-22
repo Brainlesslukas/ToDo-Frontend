@@ -1,11 +1,8 @@
-const { defineConfig } = require('@vue/cli-service');
-const dotenv = require('dotenv');
-
-dotenv.config({ path: './stack.env' });
+const { defineConfig } = require('@vue/cli-service')
 
 module.exports = defineConfig({
   transpileDependencies: true,
   devServer: {
     port: 8081
   }
-});
+})
