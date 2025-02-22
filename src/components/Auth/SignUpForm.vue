@@ -31,7 +31,7 @@
 
     <!-- Confirm Password Field -->
     <div class="mt-4 space-y-2">
-      <p class="text-lg text-light font-light">Confirm Password</p>
+      <p class="text-lg text-light font-light text-white">Confirm Password</p>
       <input v-model="confirmPassword"
              type="password"
              placeholder="Please confirm your Password"

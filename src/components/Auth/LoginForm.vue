@@ -1,6 +1,9 @@
 <template>
   <div class="flex flex-col justify-center px-6 sm:px-8 md:px-12 w-full sm:w-96 md:w-80 lg:w-96 py-5 bg-[#0D1B12] rounded-lg shadow-xl font-raleway border-[1px] border-green-700">
-    <h1 class="text-5xl font-light flex justify-center items-center text-white">Login</h1>
+
+    <div class="text-5xl font-light flex justify-center items-center text-white">
+      <h1>Login</h1>
+    </div>
 
     <div class="mt-8 space-y-2">
       <p class="text-lg text-white font-light">Email</p>
