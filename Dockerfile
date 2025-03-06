@@ -1,4 +1,3 @@
-# Stufe 1: Build der Vue-App
 FROM node:18 AS builder
 
 WORKDIR /app
@@ -9,10 +8,12 @@ RUN npm install
 
 COPY . .
 
+ARG VUE_APP_API_DOMAIN
+ENV VUE_APP_API_DOMAIN=${VUE_APP_API_DOMAIN}
+
+# Baue die Vue-App
 RUN npm run build
 
-
-# Stufe 2: Deployment mit Nginx
 FROM nginx:alpine
 
 COPY --from=builder /app/dist /usr/share/nginx/html
