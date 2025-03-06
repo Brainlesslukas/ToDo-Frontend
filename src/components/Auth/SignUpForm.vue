@@ -75,6 +75,7 @@ export default {
 
   data() {
     return {
+      apiUrl: process.env.VUE_APP_API_DOMAIN,
       name: '',
       email: '',
       password: '',
@@ -87,12 +88,13 @@ export default {
 
   methods: {
     async sendData() {
+      console.log('Domain:' + this.apiUrl)
       this.errorMessage = '';
       this.isLoading = true;
       this.responseMessage = '';
 
       try {
-        const response = await axios.post('https://api.brainlesslukas.xyz/auth/signup', {
+        const response = await axios.post(`${this.apiUrl}/auth/signup`, {
           name: this.name,
           email: this.email,
           password: this.password

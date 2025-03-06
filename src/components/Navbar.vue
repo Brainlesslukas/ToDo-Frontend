@@ -15,7 +15,9 @@
     </div>
 
     <div v-if="state.isAuthenticated" class="flex space-x-12 mr-16 font-extralight text-lg font-raleway text-white hidden md:block">
-      <h1>Logged IN :)</h1>
+      <p class="relative inline-block pb-1 text-lg after:block after:w-0 after:h-[0.5px] after:bg-white after:transition-all after:duration-300 after:left-0 hover:after:w-full">
+        Hello User!
+      </p>
     </div>
 
     <div v-else>
@@ -23,7 +25,7 @@
         <a href="https://taskify.brainlesslukas.xyz/login" class="relative inline-block pb-1 text-lg after:block after:w-0 after:h-[0.5px] after:bg-white after:transition-all after:duration-300 after:left-0 hover:after:w-full">
           Login
         </a>
-        <a href="https://taskify.brainlesslukas.xyz/register" class="relative inline-block pb-1 text-lg after:block after:w-0 nacher:h-[0.5px] after:bg-white after:transition-all after:duration-300 after:left-0 hover:after:w-full">
+        <a href="https://taskify.brainlesslukas.xyz/register" class="relative inline-block pb-1 text-lg after:block after:w-0 after:h-[0.5px] after:bg-white after:transition-all after:duration-300 after:left-0 hover:after:w-full">
           Register
         </a>
       </div>
@@ -40,20 +42,14 @@ const state = reactive({
   user: null,
 });
 
-console.log("Skript wird geladen");
-
 onMounted(async () => {
-  console.log("onMounted Hook gestartet");
   const userData = await checkAuth();
-  console.log("Benutzerdaten empfangen:", userData);
 
   if (userData) {
     state.isAuthenticated = true;
     state.user = userData;
-    console.log("Benutzer ist authentifiziert:", state.user);
   } else {
     state.isAuthenticated = false;
-    console.log("Benutzer ist nicht authentifiziert");
   }
 });
 </script>

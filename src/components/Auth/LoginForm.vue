@@ -57,6 +57,7 @@ export default {
   name: 'LoginForm',
   data() {
     return {
+      apiUrl: process.env.VUE_APP_API_DOMAIN,
       email: '',
       password: '',
       responseMessage: '',
@@ -71,7 +72,7 @@ export default {
       this.isLoading = true;
 
       try {
-        const response = await axios.post('https://api.brainlesslukas.xyz/auth/login', {
+        const response = await axios.post(`${this.apiUrl}/auth/login`, {
           email: this.email,
           password: this.password
         });
