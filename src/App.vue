@@ -9,6 +9,8 @@
       <Background />
     </div>
 
+    <CSAlert class="z-20"/>
+
     <div class="mt-20 flex-1 mb-20">
       <router-view />
     </div>
@@ -24,13 +26,15 @@
 import Background from "@/components/Background.vue";
 import Navbar from "@/components/Navbar.vue";
 import Footer from "@/components/Footer.vue";
+import CSAlert from "@/components/Alerts/CSAlert.vue";
 
 export default {
   name: 'app',
   components: {
     Background,
     Navbar,
-    Footer
+    Footer,
+    CSAlert
   }
 }
 </script>

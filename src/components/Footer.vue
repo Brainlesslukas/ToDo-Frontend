@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col justify-center items-center pb-5 pt-10 gap-y-5 text-white border-t-[1px] border-green-500">
 
-    <div class="flex flex-col md:flex-row justify-center gap-x-36 w-full font-raleway">
+    <div class="flex flex-col md:flex-row justify-center gap-x-36 w-full">
 
       <div class="flex flex-col items-center">
         <h1 class="text-lg font-normal">Follow us</h1>
