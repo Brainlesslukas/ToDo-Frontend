@@ -16,7 +16,7 @@
 
     <div v-if="state.isAuthenticated" class="flex space-x-12 mr-16 font-extralight text-lg font-raleway text-white hidden md:block">
       <p class="relative inline-block pb-1 text-lg after:block after:w-0 after:h-[0.5px] after:bg-white after:transition-all after:duration-300 after:left-0 hover:after:w-full">
-        Hello User!
+        Hello {{ state.username }}!
       </p>
     </div>
 
@@ -36,20 +36,31 @@
 <script setup>
 import { reactive, onMounted } from "vue";
 import { checkAuth } from "@/services/authService";
+import axiosInstance from "@/utils/axiosInstance";
+
 
 const state = reactive({
   isAuthenticated: false,
   user: null,
+  username: null,
 });
 
 onMounted(async () => {
   const userData = await checkAuth();
+  const apiUrl = process.env.VUE_APP_API_DOMAIN
 
   if (userData) {
     state.isAuthenticated = true;
     state.user = userData;
   } else {
     state.isAuthenticated = false;
+  }
+
+  try {
+    const response = await axiosInstance.get(`${apiUrl}/profil`);
+    state.username = response.data.name;
+  } catch (error) {
+    console.error("Fehler beim Abrufen der API-Daten:", error);
   }
 });
 </script>

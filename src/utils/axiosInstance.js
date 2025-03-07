@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const apiUrl = process.env.VUE_APP_API_DOMAIN
+
 const axiosInstance = axios.create({
-    baseURL: 'https://api.brainlesslukas.xyz',
+    baseURL: `${apiUrl}`,
 });
 
 axiosInstance.interceptors.request.use((config) => {
