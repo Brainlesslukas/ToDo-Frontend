@@ -24,7 +24,7 @@
 
 <script>
 import Background from "@/components/Background.vue";
-import Navbar from "@/components/Navbar.vue";
+import Navbar from "@/components/Navbar/Navbar.vue";
 import Footer from "@/components/Footer.vue";
 import CSAlert from "@/components/Alerts/CSAlert.vue";
 

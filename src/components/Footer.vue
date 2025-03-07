@@ -26,7 +26,7 @@
 
       <div class="flex flex-col items-center">
         <h1 class="text-lg font-normal">Contact</h1>
-        <div class="text-m font-extralight pt-3">
+        <div class="text-m font-light pt-3">
           <a href="mailto:info@taskify.de">info@taskify.de</a>
         </div>
       </div>
