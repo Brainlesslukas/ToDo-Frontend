@@ -18,7 +18,7 @@
     <div class="relative">
         <button class="flex items-center space-x-2" @click="toggleDropdown">
           <span class="text-lg"><i class="fa-solid fa-caret-down"></i> {{ state.username }}</span>
-          <img src="../../assets/brainlesslukas.png" class="w-8 h-8 rounded-full transition-all duration-300 ease-in-out hover:ring-2 hover:ring-white" alt="User Avatar">
+          <img :src="state.profilePicture" class="w-8 h-8 rounded-full transition-all duration-300 ease-in-out hover:ring-2 hover:ring-white" alt="User Avatar">
         </button>
 
         <transition name="fade">
@@ -80,16 +80,20 @@ onMounted(async () => {
 
   try {
     const response = await axiosInstance.get(`${apiUrl}/profil`);
+    const profilePictureResponse = await axiosInstance.get(`${apiUrl}/profile-picture`, {
+      responseType: 'blob' // Falls das Bild als Blob zurückkommt
+    });
+
     state.username = response.data.name;
+
+    // Wenn das Bild als URL zurückkommt
+    state.profilePicture = URL.createObjectURL(profilePictureResponse.data);
+
   } catch (error) {
     console.error("Fehler beim Abrufen der API-Daten:", error);
   }
 
   document.addEventListener('click', closeDropdown);
-});
-
-onUnmounted(() => {
-  document.removeEventListener('click', closeDropdown);
 });
 </script>
 
