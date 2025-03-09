@@ -22,8 +22,8 @@
         </button>
         <transition name="fade">
           <div v-if="isDropdownOpen" class="absolute left-1/2 transform -translate-x-1/2 bg-[#0F1E16] text-white rounded-md w-40 mt-4 shadow-lg transition-all duration-300 ease-in-out border border-green-500">
-            <div class="flex justify-center relative group">
-              <img :src="state.profilePicture" class="w-16 h-16 rounded-full transition-all duration-300 ease-in-out group-hover:brightness-75 cursor-pointer pt-2" @click="triggerFileUpload" alt="User Avatar">
+            <div class="flex justify-center relative group pt-2">
+              <img :src="state.profilePicture" class="w-16 h-16 rounded-full transition-all duration-300 ease-in-out group-hover:brightness-75 cursor-pointer" @click="triggerFileUpload" alt="User Avatar">
               <i class="fas fa-pencil-alt absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer" @click="triggerFileUpload"></i>
               <input type="file" ref="fileInput" class="hidden" @change="handleFileUpload">
             </div>
