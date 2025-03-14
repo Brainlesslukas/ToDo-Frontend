@@ -29,7 +29,6 @@
       />
     </div>
 
-    <!-- Confirm Password Field -->
     <div class="mt-4 space-y-2">
       <p class="text-lg text-light font-light text-white">Confirm Password</p>
       <input v-model="confirmPassword"
@@ -44,7 +43,7 @@
 
     <div class="flex justify-center items-center">
       <button
-          @click="sendData"
+          @click="signUp"
           :disabled="isLoading || password !== confirmPassword"
           class="text-lg font-medium mt-4 bg-green-500 w-28 h-10 rounded-full flex justify-center items-center hover:bg-green-400 cursor-pointer"
       >
@@ -56,59 +55,66 @@
       </button>
     </div>
 
-    <div class="mt-4 flex justify-center items-center font-light text-gray-500">
-      <p>Already have an account? <span class="text-green-500 hover:underline"><a href="/login">Login</a></span></p>
-    </div>
-
     <div class="mt-2 flex justify-center items-center font-light">
       <p v-if="responseMessage" class="mt-4 text-green-500">{{ responseMessage }}</p>
       <p v-if="errorMessage" class="mt-4 text-red-500">{{ errorMessage }}</p>
     </div>
+
+    <div class="mt-4 flex justify-center items-center font-light text-gray-500">
+      <p>Don't have an Account? <span class="text-green-500 hover:underline"><a href="/register">Register</a></span></p>
+    </div>
+    
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import { ref } from "vue";
+import { useAuthStore } from "@/stores/authStore";
 
 export default {
-  name: 'SignUpForm',
+  setup() {
+    const authStore = useAuthStore();
 
-  data() {
-    return {
-      apiUrl: process.env.VUE_APP_API_DOMAIN,
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-      responseMessage: '',
-      errorMessage: '',
-      isLoading: false,
-    };
-  },
+    const name = ref("");
+    const email = ref("");
+    const password = ref("");
+    const confirmPassword = ref("");
+    const responseMessage = ref("");
+    const errorMessage = ref("");
+    const isLoading = ref(false);
 
-  methods: {
-    async sendData() {
-      console.log('Domain:' + this.apiUrl)
-      this.errorMessage = '';
-      this.isLoading = true;
-      this.responseMessage = '';
+    async function signUp() {
+      errorMessage.value = "";
+      responseMessage.value = "";
+      isLoading.value = true;
 
       try {
-        const response = await axios.post(`${this.apiUrl}/auth/signup`, {
-          name: this.name,
-          email: this.email,
-          password: this.password
-        });
+        const credentials = { name: name.value, email: email.value, password: password.value };
+        await authStore.signUp(credentials);
+        await authStore.checkAuth();
 
-        const token = response.data.token;
-        localStorage.setItem('jwtToken', token);
-        this.responseMessage = response.data.message || 'Successfully Registered!';
+        if (authStore.errorMessage) {
+          errorMessage.value = authStore.errorMessage;
+        } else {
+          responseMessage.value = "Successfully registered!";
+        }
       } catch (error) {
-        this.errorMessage = error.response?.data?.message || error.message;
+        errorMessage.value = "Ein unerwarteter Fehler ist aufgetreten.";
       } finally {
-        this.isLoading = false;
+        isLoading.value = false;
       }
     }
-  }
-}
+
+    return {
+      name,
+      email,
+      password,
+      confirmPassword,
+      responseMessage,
+      errorMessage,
+      isLoading,
+      signUp
+    };
+  },
+};
 </script>
