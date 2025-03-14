@@ -14,23 +14,23 @@
       <img src="../../assets/Logo.webp" class="h-8 mr-2">
     </div>
 
-    <div v-if="state.isAuthenticated" class="flex items-center space-x-4 mr-16 font-extralight text-lg font-raleway text-white hidden md:flex p-2 rounded-full transition-colors duration-300 hover:bg-[#0F1E16]">
+    <div v-if="authStore.isAuthenticated" class="flex items-center space-x-4 mr-16 font-extralight text-lg font-raleway text-white hidden md:flex p-2 rounded-full transition-colors duration-300 hover:bg-[#0F1E16]">
       <div class="relative">
         <button class="flex items-center space-x-2" @click="toggleDropdown">
-          <span class="text-lg"><i class="fa-solid fa-caret-down"></i> {{ state.username }}</span>
-          <img :src="state.profilePicture" class="w-8 h-8 rounded-full transition-all duration-300 ease-in-out hover:ring-2 hover:ring-white" alt="User Avatar">
+          <span class="text-lg"><i class="fa-solid fa-caret-down"></i> {{ authStore.username }}</span>
+          <img :src="authStore.profilePicture" class="w-8 h-8 rounded-full transition-all duration-300 ease-in-out hover:ring-2 hover:ring-white" alt="User Avatar">
         </button>
         <transition name="fade">
           <div v-if="isDropdownOpen" class="absolute left-1/2 transform -translate-x-1/2 bg-[#0F1E16] text-white rounded-md w-40 mt-4 shadow-lg transition-all duration-300 ease-in-out border border-green-500">
             <div class="flex justify-center relative group pt-2">
-              <img :src="state.profilePicture" class="w-16 h-16 rounded-full transition-all duration-300 ease-in-out group-hover:brightness-75 cursor-pointer" @click="triggerFileUpload" alt="User Avatar">
+              <img :src="authStore.profilePicture" class="w-16 h-16 rounded-full transition-all duration-300 ease-in-out group-hover:brightness-75 cursor-pointer" @click="triggerFileUpload" alt="User Avatar">
               <i class="fas fa-pencil-alt absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer" @click="triggerFileUpload"></i>
               <input type="file" ref="fileInput" class="hidden" @change="handleFileUpload">
             </div>
             <div class="pt-2">
               <a href="/profile" class="block py-2 px-4 hover:bg-[#1a2b21] rounded-md">Profile</a>
               <a href="/settings" class="block py-2 px-4 hover:bg-[#1a2b21] rounded-md">Settings</a>
-              <a href="/logout" class="block py-2 px-4 hover:bg-[#1a2b21] rounded-md">Logout</a>
+              <a href="/logout" class="block py-2 px-4 hover:bg-[#1a2b21] rounded-md" @click="authStore.logout()">Logout</a>
             </div>
           </div>
         </transition>
@@ -51,26 +51,24 @@
 </template>
 
 <script setup>
-import { reactive, onMounted, ref, onUnmounted } from "vue";
-import { checkAuth } from "@/services/authService";
-import axiosInstance from "@/utils/axiosInstance";
+import { ref, onMounted, onUnmounted } from "vue";
+import { useAuthStore } from "@/stores/authStore";
+import { watch } from "vue";
 
-const state = reactive({
-  isAuthenticated: false,
-  user: null,
-  username: null,
-  profilePicture: null
-});
-
+const authStore = useAuthStore();
 const isDropdownOpen = ref(false);
 const fileInput = ref(null);
+
+watch(() => authStore.isAuthenticated, (newStatus) => {
+  console.log("Auth-Status geändert:", newStatus);
+});
 
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value;
 };
 
 const closeDropdown = (event) => {
-  if (!event.target.closest('.relative')) {
+  if (!event.target.closest(".relative")) {
     isDropdownOpen.value = false;
   }
 };
@@ -82,47 +80,16 @@ const triggerFileUpload = () => {
 const handleFileUpload = async (event) => {
   const file = event.target.files[0];
   if (!file) return;
-
-  const formData = new FormData();
-  formData.append("file", file);
-
-  try {
-    const apiUrl = process.env.VUE_APP_API_DOMAIN;
-    await axiosInstance.post(`${apiUrl}/profile-picture/upload`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
-    state.profilePicture = URL.createObjectURL(file);
-  } catch (error) {
-    console.error("Fehler beim Hochladen des Bildes:", error);
-  }
+  await authStore.uploadProfilePicture(file);
 };
 
-onMounted(async () => {
-  const userData = await checkAuth();
-  const apiUrl = process.env.VUE_APP_API_DOMAIN;
+onMounted(() => {
+  authStore.checkAuth();
+  document.addEventListener("click", closeDropdown);
+});
 
-  if (userData) {
-    state.isAuthenticated = true;
-    state.user = userData;
-  } else {
-    state.isAuthenticated = false;
-  }
-
-  try {
-    const response = await axiosInstance.get(`${apiUrl}/profil`);
-    const profilePictureResponse = await axiosInstance.get(`${apiUrl}/profile-picture`, {
-      responseType: 'blob'
-    });
-
-    state.username = response.data.name;
-    state.profilePicture = URL.createObjectURL(profilePictureResponse.data);
-  } catch (error) {
-    console.error("Fehler beim Abrufen der API-Daten:", error);
-  }
-
-  document.addEventListener('click', closeDropdown);
+onUnmounted(() => {
+  document.removeEventListener("click", closeDropdown);
 });
 </script>
 
